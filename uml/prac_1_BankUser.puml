@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+
+package "Банкомат" as ATMOPerations {
+    usecase "Авторизация" as auth
+    usecase "Управление счетом" as expenseManagment
+    usecase "Перевод средств" as moneyTransfer 
+    usecase "Оплата услуг" as servicePayment 
+    usecase "Техническое обслуживание" as maintenance
+    usecase "Операции с сейфом" as vaultManagment
+}
+
+actor "Клиент Банка" as BankUser
+BankUser --> auth
+BankUser --> expenseManagment
+BankUser --> moneyTransfer
+BankUser --> servicePayment
+
+actor "Инкассатор" as MoneyMaster
+MoneyMaster --> auth
+MoneyMaster --> maintenance
+MoneyMaster --> vaultManagment
+
+@enduml
